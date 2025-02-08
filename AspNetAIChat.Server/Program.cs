@@ -1,11 +1,11 @@
-var builder = WebApplication.CreateSlimBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddSignalR();
+
+// builder.Services.AddScoped<IAddConversationUseCase, AddConversationUseCase>();
+// builder.Services.AddScoped<IGetConversationsUseCase, GetConversationUseCase>();
 
 var app = builder.Build();
 

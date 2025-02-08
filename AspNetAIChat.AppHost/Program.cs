@@ -1,6 +1,8 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-var mongo = builder.AddMongoDB("mongo");
+var mongo = builder.AddMongoDB("mongo")
+    .WithLifetime(ContainerLifetime.Persistent)
+    .WithMongoExpress();
 
 var chatDb = mongo.AddDatabase("chat");
 

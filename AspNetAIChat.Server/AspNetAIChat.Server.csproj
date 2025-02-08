@@ -5,8 +5,10 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <SpaRoot>..\aspnetaichat.client</SpaRoot>
-    <SpaProxyLaunchCommand>bun dev</SpaProxyLaunchCommand>
+    <SpaProxyLaunchCommand>bun install &amp;&amp; bun dev</SpaProxyLaunchCommand>
     <SpaProxyServerUrl>https://localhost:62430</SpaProxyServerUrl>
+    <SpaProxyLaunchCommand Condition="$([MSBuild]::IsOsPlatform('Windows'))">cmd.exe /s /c $(SpaProxyLaunchCommand)</SpaProxyLaunchCommand>
+    <SpaProxyLaunchCommand Condition="$([MSBuild]::IsOSUnixLike())">sh -c %5C&quot;$(SpaProxyLaunchCommand)%5C&quot;</SpaProxyLaunchCommand>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,12 +19,6 @@
     </PackageReference>
     <PackageReference Include="MongoDB.Driver" Version="3.1.0" />
     <PackageReference Include="OpenAI" Version="2.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\aspnetaichat.client\aspnetaichat.client.esproj">
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
   </ItemGroup>
 
 </Project>

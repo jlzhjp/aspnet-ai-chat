@@ -70,7 +70,7 @@ public class Conversation
     {
         var selectedNode =
             root.SingleOrDefault(child => restChoices.Contains(child.Id)) ??
-            root.FirstOrDefault();
+            root.LastOrDefault();
 
         if (selectedNode is null) return;
         
